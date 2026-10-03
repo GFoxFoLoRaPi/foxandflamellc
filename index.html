@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fox and Flame LLC</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .fire-text {
+            position: relative;
+            font-size: 3em;
+            color: red;
+            text-shadow: 0 0 20px red, 0 0 40px red, 0 0 60px red, 0 0 80px red, 0 0 100px red, 0 0 150px red, 0 0 200px red;
+            animation: fire 1s steps(4, start) infinite;
+        }
+        .fire-text::before, 
+        .fire-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            text-shadow: none;
+            animation: fire 1s steps(4, start) infinite, flicker 0.5s linear infinite;
+            mix-blend-mode: darken;
+        }
+        .fire-text::before {
+            animation-delay: 0.2s;
+        }
+        .fire-text::after {
+            animation-delay: 0.4s;
+        }
+        @keyframes fire {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        @keyframes flicker {
+            0%, 25%, 75%, 100% { opacity: 1; }
+            12.5%, 62.5% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="logo.png" alt="Fox and Flame LLC Logo">
+    </div>
+    <div class="fire-text" data-text="Coming Soon">Coming Soon</div>
+</body>
+</html>
